@@ -56,11 +56,15 @@ public class Game{
     // uses compare method to see what result to display
     public void displayResultOfMatch(Integer result){
 
-        String win = "You win! + 1 Points!\n";
+        String win = "\nYou win! + 1 Points!\n" + 
+                     "Total Points: " + record.points +
+                     "\n\n";
 
-        String tie = "Tie! No change in points!\n";
+        String tie = "\nTie! No change in points!\n\n";
 
-        String loss = "You lose! Game Over!\n";
+        String loss = "\nYou lose! Game Over!\n" +
+                      "Final Score: " + record.points + 
+                      "\n\n";
 
         if (result == 1)
             System.out.print(win);
@@ -114,7 +118,7 @@ public class Game{
                         "4: Quit\n\n" +
                         "Choice: ";
 
-        String reprompt = "Please input valid choice\n";
+        String reprompt = "Please input valid choice\n\n";
 
         boolean valid = false;
 
@@ -122,6 +126,7 @@ public class Game{
         while (!valid){
             System.out.print(prompt);
             playerChoice = getUserInput();
+            System.out.print("\n");
             valid = checkIfInputValid(playerChoice, 4);
             if (!valid)
                 System.out.print(reprompt);
