@@ -36,8 +36,6 @@ public class Game{
     public Game()
     {
 
-        quitProgram = false;
-
         // https://www.w3schools.com/java/java_user_input.asp
         scanner = new Scanner(System.in);
 
@@ -104,9 +102,14 @@ public class Game{
     }
 
     public void updateDonePlaying(boolean victory){
-        if (!victory)
+        if (!victory || playerChoice == 4)
             donePlaying = true;
 
+    }
+
+    public void updateQuitProgram(Integer input)
+    {
+        quitProgram = input == 3;
     }
 
     public void promptToRecord(){
@@ -123,31 +126,41 @@ public class Game{
     // high scores and such, until finally the program goes back to main
     public void play(){
 
+
         //prompt for main menu in a while loop
         while (!quitProgram)
         {
             mainMenuPrompt();
+            updateQuitProgram(mainMenuChoice);
             
-            //put below stuff in a while loop that checks for loss or quit
-            while (!donePlaying){
+            if (!quitProgram){
                 
-                playPrompt();
-        
-                // below stuff is in if statement that checks whether input was not to quit
-                generateComputerChoice();
-        
-                // if player lost, we're done playing
-                updateDonePlaying(playerIsVictorious());
-        
-                // increment points if player won
-                updatePoints(playerIsVictorious());
-        
-                // display results
-                displayResultOfMatch(playerIsVictorious());
-        
+                //reset donePlaying
+                donePlaying = false;
+
+                //put below stuff in a while loop that checks for loss or quit
+                while (!donePlaying){
+                
+                    playPrompt();
+            
+                    // below stuff is in if statement that checks whether
+                    // input was not to quit
+                    generateComputerChoice();
+            
+                    // if player lost, we're done playing
+                    updateDonePlaying(playerIsVictorious());
+            
+                    // increment points if player won
+                    updatePoints(playerIsVictorious());
+            
+                    // display results
+                    displayResultOfMatch(playerIsVictorious());                    
+                }
+
                 //outside of while loop, ie after the game has ended
                 promptToRecord();
             }
+            
             
         }
                 
@@ -172,6 +185,7 @@ public class Game{
         //code to reprompt if not allowed input
         while (!valid){
             System.out.print(prompt);
+
             mainMenuChoice = getUserInput();
             valid = checkIfInputValid(mainMenuChoice, 3);
             if (!valid)
