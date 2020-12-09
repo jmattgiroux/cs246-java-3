@@ -50,11 +50,7 @@ Java Extension Pack by Microsoft, version 0.10.0, from 8/13/2020\
 
 Build and Execution Instructions:
 
-From a terminal started within the cs246-java-3 project directory:
-
-
-This will compile and execute this program.
-
+See first screenshot
 
 Screenshots:
 
