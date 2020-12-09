@@ -60,6 +60,7 @@ public class Record {
         scoresRecord = new ArrayList<Score>();
 
         //add 10 blank scores to scoresRecord
+        // so that the display function works
         for (int i = 0; i < 10; i++)
             scoresRecord.add(new Score());
 
@@ -89,7 +90,7 @@ public class Record {
         try {
             File file = new File("save.txt");
             Scanner scanner = new Scanner(file);
-            while(scanner.hasNextLine())
+            while(scanner.hasNext())
             {
                 Score score = new Score(scanner.next(), scanner.nextInt());
                 scoresRecord.add(score);
@@ -173,10 +174,14 @@ public class Record {
 
         String prompt = "Please type your name: ";
 
+        
+
         System.out.print(prompt);
+        
+        String string = scanner.next();
         System.out.print("\n");
 
-        return scanner.nextLine();
+        return string;
 
         
 
