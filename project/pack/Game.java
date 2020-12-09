@@ -99,7 +99,7 @@ public class Game{
 
     // checks whether player's input was valid
     public boolean checkIfInputValid(Integer input, Integer range){
-        
+
         return (input > 0 && input < (range + 1));
     }
 
@@ -187,7 +187,12 @@ public class Game{
         // this will result in the input being seen as invalid by
         // checkIfInputValid, hence the user will be reprompted
         Integer integer = 0;
+        try {
         integer = scanner.nextInt();
+        } catch (Exception e) {
+            //TODO: handle exception
+            
+        }
         return integer;
     }
 }
