@@ -99,8 +99,8 @@ public class Game{
 
     // checks whether player's input was valid
     public boolean checkIfInputValid(Integer input, Integer range){
-
-        return true;
+        
+        return (input > 0 && input < (range + 1));
     }
 
     public void updateDonePlaying(boolean victory){
