@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+// w3schools.com/java/java_files_create.asp
+import java.io.File;
+import java.io.IOException;
+
+// https://www.w3schools.com/java/java_files_read.asp
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 // https://stackoverflow.com/questions/16751540/sorting-an-object-arraylist-by-an-attribute-value-in-java/43129819
 import java.util.Collections;
 
@@ -76,16 +83,60 @@ public class Record {
     // reads strings from txt file and puts strings into scoresRecord ArrayList
     public void readFile(){
 
+        //resets scoresRecord before we read in the file
+        scoresRecord = new ArrayList<Score>();
+
+        try {
+            File file = new File("save.txt");
+            Scanner scanner = new Scanner(file);
+            while(scanner.hasNextLine())
+            {
+                Score score = new Score(scanner.next(), scanner.nextInt());
+                scoresRecord.add(score);
+            }
+            scanner.close();
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("File Read Error Occured");
+            e.printStackTrace();
+        }
+
     }
 
     //clears old save file, basically does opposite process
     // of readFile using a similar looping mechanism
+    // https://www.w3schools.com/java/java_files_create.asp
     public void writeFile(){
+        try {
+            FileWriter fileWriter = new FileWriter("save.txt");
+            for (int i = 0; i < scoresRecord.size(); i++){
+                fileWriter.write(scoresRecord.get(i).playerName +
+                                 " " + 
+                                 scoresRecord.get(i).points +
+                                 "\n");
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            // https://www.w3schools.com/java/java_files_create.asp
+            System.out.println("Write error occurred.");
+            e.printStackTrace();
+        }
 
     }
 
     // for if no highscores file exists
+    // https://www.w3schools.com/java/java_files_create.asp
     public void createFile(){
+        try {
+
+        File file = new File("save.txt");
+        file.createNewFile();
+            
+        } catch (IOException e) {
+            // https://www.w3schools.com/java/java_files_create.asp
+            System.out.println("File Creation Error Occurred");
+            e.printStackTrace();
+        }
 
     }
 
@@ -143,10 +194,17 @@ public class Record {
         Score score = new Score(promptForName(), points);
         scoresRecord.add(score);
 
-        displayScores();
+        
 
         //writes to file
         writeFile();
+
+        //reads back from file
+        readFile();
+
+        // displayScores comes last since that way it will be most apparent if
+        // there's an issue
+        displayScores();
 
     }
 }

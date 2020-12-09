@@ -43,6 +43,8 @@ public class Game{
 
         record = new Record();
 
+        
+
     }
 
     // member methods
