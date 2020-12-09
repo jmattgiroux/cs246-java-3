@@ -56,10 +56,10 @@ public class Record {
         for (int i = 0; i < 10; i++)
             scoresRecord.add(new Score());
 
-        // TODO: Comment out block of code below
-        //add 10 increasing scores to scoresRecord
-        for (int i = 0; i < 10; i++)
-            scoresRecord.add(new Score("" + i, i));
+        // // Done: Comment out block of code below
+        // //add 10 increasing scores to scoresRecord
+        // for (int i = 0; i < 10; i++)
+        //     scoresRecord.add(new Score("" + i, i));
 
         //set points to 0
         points = 0;
