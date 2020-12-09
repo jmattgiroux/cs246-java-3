@@ -2,6 +2,8 @@ package pack;
 
 import pack.Record;
 
+// https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game{
@@ -45,26 +47,59 @@ public class Game{
 
     // member methods
 
-    // generate's computer's choice
-    public void generateComputerChoice(){
-
+    // updates computer's choice
+    public void updateComputerChoice(){
+        Random random = new Random();
+        computerChoice = (random.nextInt() % 3) + 1;
     }
 
     // uses compare method to see what result to display
-    public void displayResultOfMatch(boolean playerIsVictorious){
+    public void displayResultOfMatch(Integer result){
+
+        String win = "You win! + 1 Points!\n";
+
+        String tie = "Tie! No change in points!\n";
+
+        String loss = "You lose! Game Over!\n";
+
+        if (result == 1)
+            System.out.print(win);
+        
+        if (result == 2)
+            System.out.print(tie);
+
+        if (result == 3)
+            System.out.print(loss);
 
     }
 
     // returns trueIfWon
-    public boolean playerIsVictorious(){
+    public Integer compare(){
 
-        return true;
+        // 1: Rock
+        // 2: Paper
+        // 3: Scissors
+
+        if ((computerChoice % 3) == (playerChoice - 1))
+        {
+            // 1 is win
+            return 1;
+        }
+
+        else if (computerChoice == playerChoice)
+            // 2 is tie
+            return 2;
+
+        else 
+            // 3 is loss
+            return 3;
     }
 
     // increment playerScore
-    public void updatePoints(boolean victory){
+    public void updatePoints(Integer result){
         //increments record.points
-        if (victory)
+        // 1 is victory
+        if (result == 1)
             record.points++;
     }
 
@@ -101,8 +136,8 @@ public class Game{
         return (input > 0 && input < (range + 1));
     }
 
-    public void updateDonePlaying(boolean victory){
-        if (!victory || playerChoice == 4)
+    public void updateDonePlaying(Integer result){
+        if (result == 3 || playerChoice == 4)
             donePlaying = true;
 
     }
@@ -145,16 +180,16 @@ public class Game{
             
                     // below stuff is in if statement that checks whether
                     // input was not to quit
-                    generateComputerChoice();
+                    updateComputerChoice();
             
                     // if player lost, we're done playing
-                    updateDonePlaying(playerIsVictorious());
+                    updateDonePlaying(compare());
             
                     // increment points if player won
-                    updatePoints(playerIsVictorious());
+                    updatePoints(compare());
             
                     // display results
-                    displayResultOfMatch(playerIsVictorious());                    
+                    displayResultOfMatch(compare());                    
                 }
 
                 //outside of while loop, ie after the game has ended
