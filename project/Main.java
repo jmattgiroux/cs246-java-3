@@ -1,18 +1,20 @@
 import pack.Game;
-import pack.Record;
 
 public class Main {
 
     // member variables
-    Game game;
+    static Game game;
 
-    Record record;
+    static boolean quitProgram;
 
-    boolean quitProgram;
+    static Integer mainScreenChoice;
 
 
     // play, see high scores, or quit
     String openingPrompt;
+
+    // message for when player quits
+    String endMessage;
 
 
     // our program; it prompts user in a loop.
@@ -21,6 +23,15 @@ public class Main {
 
     public static void main(String[] args) {
         
+        
+
+        game = new Game();
+
+        // quitProgram = false;
+
+        //while loop that checks for quitProgram
+        //player chooses between play, quit, or see record by
+        // being prompted for mainScreenChoice
         
 
 

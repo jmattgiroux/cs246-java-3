@@ -10,7 +10,7 @@ public class Record {
         // Score class member variables
 
         String playerName;
-        Integer score;
+        Integer points;
 
         // default constructor
 
@@ -22,11 +22,13 @@ public class Record {
         // this constructor will be used for when we 
         // parse the high scores file into Scores for
         // our scoresRecord ArrayList
-        public Score(String playerName, Integer score)
+        public Score(String playerName, Integer points)
         {
 
         }
     }
+
+    Integer points;
 
     // Record class member variables
     ArrayList<Score> scoresRecord;
@@ -34,12 +36,17 @@ public class Record {
     // default constructor
     public Record()
     {
+        //instantiate scoresRecord
+        scoresRecord = new ArrayList<Score>();
+
+        //update scoresRecord with saved highscores file
+        readFile();
 
     }
 
     // member methods
 
-    // reads strings from txt file and puts strings into
+    // reads strings from txt file and puts strings into scoresRecord ArrayList
     public void readFile(){
 
     }
@@ -61,15 +68,19 @@ public class Record {
     }
 
 
-    public void promptForName(){
+    public String promptForName(){
 
+        return " ";
     }
 
     // calls promptForName, adds a new Score element to our scoresRecord ArrayList
     public void recordScore(){
         //something like
-        // Score score = new Score(promptForName(), score);
-        //scoresRecord.add(score);
+        Score score = new Score(promptForName(), points);
+        scoresRecord.add(score);
+
+        //writes to file
+        writeFile();
 
     }
 }
