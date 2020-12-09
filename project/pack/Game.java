@@ -152,13 +152,31 @@ public class Game{
         quitProgram = input == 3;
     }
 
-    public void promptToRecord(){
+    public void recordPrompt(){
 
+        String prompt = "Would you like to record your score?\n" +
+                        "1: Yes\n" + 
+                        "2: No\n" +
+                        "Choice: ";
+
+        String reprompt = "Please input valid choice\n\n";
+
+        boolean valid = false;
+
+        //code to reprompt if not allowed input
+        while (!valid){
+            System.out.print(prompt);
+            playerChoice = getUserInput();
+            System.out.print("\n");
+            valid = checkIfInputValid(playerChoice, 2);
+            if (!valid)
+                System.out.print(reprompt);
+        }
         //if statement for if player wants to record score
-        record.recordScore();
-
-        record.displayScores();
+        if (playerChoice == 1)
+            record.recordScore();
     }
+
     
 
     // loop that runs until the player quits or loses, at which point
@@ -172,8 +190,13 @@ public class Game{
         {
             mainMenuPrompt();
             updateQuitProgram(mainMenuChoice);
+
+            if (!quitProgram && mainMenuChoice == 2){
+                record.displayScores();
+            }
+
             
-            if (!quitProgram){
+            if (!quitProgram && mainMenuChoice == 1){
                 
                 //reset donePlaying
                 donePlaying = false;
@@ -198,7 +221,7 @@ public class Game{
                 }
 
                 //outside of while loop, ie after the game has ended
-                promptToRecord();
+                recordPrompt();
             }
             
             
