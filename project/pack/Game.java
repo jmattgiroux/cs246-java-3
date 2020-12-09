@@ -190,8 +190,15 @@ public class Game{
         try {
         integer = scanner.nextInt();
         } catch (Exception e) {
-            //TODO: handle exception
-            
+            // infinite loop fix attempt 1:
+            // resets scanner in order to prevent infinite loop
+            // ^see commit history, search "infinite loop"
+            // scanner.reset();
+            // ^ Doesn't fix infinite loop
+
+            // infinite loop fix attempt 2:
+            // https://stackoverflow.com/questions/1794281/java-infinite-loop-using-scanner-in-hasnextint
+            scanner.next();
         }
         return integer;
     }
