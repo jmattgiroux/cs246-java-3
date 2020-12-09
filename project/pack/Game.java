@@ -41,6 +41,8 @@ public class Game{
         // https://www.w3schools.com/java/java_user_input.asp
         scanner = new Scanner(System.in);
 
+        record = new Record();
+
     }
 
     // member methods
