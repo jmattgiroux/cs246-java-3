@@ -189,16 +189,22 @@ public class Game{
         Integer integer = 0;
         try {
         integer = scanner.nextInt();
-        } catch (Exception e) {
-            // infinite loop fix attempt 1:
+        } catch (Exception e) { 
+
+            // infinite loop fix attempt 1: Failure
             // resets scanner in order to prevent infinite loop
             // ^see commit history, search "infinite loop"
             // scanner.reset();
             // ^ Doesn't fix infinite loop
 
-            // infinite loop fix attempt 2:
+            // infinite loop fix attempt 2: Success
             // https://stackoverflow.com/questions/1794281/java-infinite-loop-using-scanner-in-hasnextint
             scanner.next();
+
+            // TODO: Bug where user only inputs ' ' or '\n'. 
+            // This doesn't break anything, but until an actual character
+            // is input, it just spaces the cursor forward and down until
+            // the user inputs a character followed by pressing Enter
         }
         return integer;
     }
