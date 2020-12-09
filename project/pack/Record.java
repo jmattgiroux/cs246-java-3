@@ -15,7 +15,8 @@ public class Record {
         // default constructor
 
         public Score(){
-
+            playerName = "-----";
+            points = 0;
         }
 
         // non-default constructor
@@ -24,6 +25,8 @@ public class Record {
         // our scoresRecord ArrayList
         public Score(String playerName, Integer points)
         {
+            this.playerName = playerName;
+            this.points = points;
 
         }
     }
@@ -38,6 +41,10 @@ public class Record {
     {
         //instantiate scoresRecord
         scoresRecord = new ArrayList<Score>();
+
+        //add 10 blank scores to scoresRecord
+        for (int i = 0; i < 10; i++)
+            scoresRecord.add(new Score());
 
         //set points to 0
         points = 0;
@@ -67,7 +74,21 @@ public class Record {
 
     // displays top 10 scores
     public void displayScores(){
+        String header = "----- High Scores -----\n" +
+                        "-----------------------\n";
+        
+                        
 
+        System.out.print(header);
+        for (int i = 1; i < 11; i++)
+        {
+            // TODO: add indents so spacing is regular
+            String string = scoresRecord.get(scoresRecord.size() - i).playerName +
+                            " || " +
+                            scoresRecord.get(scoresRecord.size() - i).points;
+
+            System.out.println(string);
+        }
     }
 
 
