@@ -57,27 +57,35 @@ Screenshots:
 These 8 screenshots were taken in sequential order
 
 - Screenshot of compilation and execution of program, as well as the scores that were loaded from the save.txt file.
+
 ![First screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s1_compile_run_seeScores.png)
 
 - Screenshot of game being played
+
 ![2nd screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s2_play.png)
 
 - Screenshot of score being recorded for New_Player (note that there's no whitespace in the name)
+
 ![3rd screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s3_Record_Score.png)
 
 - Screenshot of another score being recorded, though in this case since there's a whitespace in the name the second part of the string has been cut off. This is deliberate, in order to preserve the structure of our save file when this record is written into the file.
+
 ![4th screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s4_record_score_again.png)
 
 - This is a screenshot of invalid input being handled in the main menu
+
 ![5th screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s5_invalid_input_main_menu.png)
 
 - This is a screenshot of invalid input being handled during gameplay
+
 ![6th screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s6_invalid_input_while_playing.png)
 
 - This is a screenshot of finishing and quitting the program
+
 ![7th screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s7_finish_and_quit.png)
 
 - This is a screenshot of the program being started again, as well as of the scores being displayed again. Note that our two new entries, New_Player and Second, which were recorded in the previous session, are now present.
+
 ![8th screenshot of Rock Paper Scissors program](https://github.com/jmattgiroux/cs246-java-3/blob/master/s8_restart_and_load_file.png)
 
 
