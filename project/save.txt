@@ -8,7 +8,9 @@
 ----- 0
 ----- 0
 ----- 0
+I 0
 Jared 1
 Happy 1
+New_Player 1
 Winny 2
-I 0
+Second 2
