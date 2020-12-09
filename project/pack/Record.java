@@ -2,6 +2,12 @@ package pack;
 
 import java.util.ArrayList;
 
+import java.util.Scanner;
+
+// https://stackoverflow.com/questions/16751540/sorting-an-object-arraylist-by-an-attribute-value-in-java/43129819
+import java.util.Collections;
+
+
 public class Record {
 
     // Score nested class
@@ -31,10 +37,14 @@ public class Record {
         }
     }
 
-    Integer points;
+    
 
     // Record class member variables
     ArrayList<Score> scoresRecord;
+
+    Integer points;
+
+    Scanner scanner;
     
     // default constructor
     public Record()
@@ -57,6 +67,8 @@ public class Record {
         //update scoresRecord with saved highscores file
         readFile();
 
+        scanner = new Scanner(System.in);
+
     }
 
     // member methods
@@ -77,12 +89,19 @@ public class Record {
 
     }
 
+    // https://stackoverflow.com/questions/16751540/sorting-an-object-arraylist-by-an-attribute-value-in-java/43129819
+   public void sortScores(){
+       scoresRecord.sort((Score s1, Score s2) -> (Integer.compare(s1.points, s2.points)));
+   }
+
+
+
     // displays top 10 scores
     public void displayScores(){
         String header = "----- High Scores -----\n" +
                         "-----------------------\n";
         
-                        
+        sortScores();
 
         System.out.print(header);
         for (int i = 1; i < 11; i++)
@@ -101,7 +120,15 @@ public class Record {
 
     public String promptForName(){
 
-        return " ";
+        String prompt = "Please type your name: ";
+
+        System.out.print(prompt);
+        System.out.print("\n");
+
+        return scanner.nextLine();
+
+        
+
     }
 
     // for after points have been recorded and for if player wants
@@ -115,6 +142,8 @@ public class Record {
         //something like
         Score score = new Score(promptForName(), points);
         scoresRecord.add(score);
+
+        displayScores();
 
         //writes to file
         writeFile();

@@ -143,7 +143,12 @@ public class Game{
 
     public void updateDonePlaying(Integer result){
         if (result == 3 || playerChoice == 4)
+        {
             donePlaying = true;
+
+            
+        }
+            
 
     }
 
@@ -223,6 +228,9 @@ public class Game{
                 //outside of while loop, ie after the game has ended
                 recordPrompt();
             }
+
+            //reset points for next game
+            record.points = 0;
             
             
         }
