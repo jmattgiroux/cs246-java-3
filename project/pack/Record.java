@@ -39,6 +39,9 @@ public class Record {
         //instantiate scoresRecord
         scoresRecord = new ArrayList<Score>();
 
+        //set points to 0
+        points = 0;
+
         //update scoresRecord with saved highscores file
         readFile();
 
@@ -71,6 +74,12 @@ public class Record {
     public String promptForName(){
 
         return " ";
+    }
+
+    // for after points have been recorded and for if player wants
+    // to play again
+    public void resetPoints(){
+
     }
 
     // calls promptForName, adds a new Score element to our scoresRecord ArrayList
